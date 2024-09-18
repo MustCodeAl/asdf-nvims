@@ -1,23 +1,49 @@
 #!/usr/bin/env bash
 
+set -e
 set -euo pipefail
 
-current_script_path=${BASH_SOURCE[0]}
-plugin_dir=$(dirname "$(dirname "$current_script_path")")
+export LATEST_NVIMS_VERSION="master"
+export DEFAULT_NVIMS_REPO="https://github.com/Traap/nvims.git"
 
-# shellcheck source=./lib/utils.bash
-source "${plugin_dir}/lib/utils.bash"
+# current_script_path=${BASH_SOURCE[0]}
+# plugin_dir=$(dirname "$(dirname "$current_script_path")")
 
-mkdir -p "$ASDF_DOWNLOAD_PATH"
+fail() {
+  echo -e "\e[31mFail:\e[m $*"
+  exit 1
+}
 
-# TODO: Adapt this to proper extension and adapt extracting strategy.
-release_file="$ASDF_DOWNLOAD_PATH/$TOOL_NAME-$ASDF_INSTALL_VERSION.tar.gz"
+download_nvims () {
+  	local version=$1
+	local download_path=$2
+	local repo_url=$3
+(
+    echo "* Downloading nvims (version:$version) to $download_path"
+	git clone --depth=1 "$repo_url" "$download_path" >/dev/null
+    echo "Download successful."
+    return 0
 
-# Download tar.gz file to the download directory
-download_release "$ASDF_INSTALL_VERSION" "$release_file"
+) || (
+    fail "An error occured during download - check if $version exists"
+  )
+}
 
-#  Extract contents of tar.gz file into the download directory
-tar -xzf "$release_file" -C "$ASDF_DOWNLOAD_PATH" --strip-components=1 || fail "Could not extract $release_file"
 
-# Remove the tar.gz file since we don't need to keep it
-rm "$release_file"
+version=${1:-"$ASDF_INSTALL_VERSION"}
+if [[ -z "$version" ]] ; then
+  fail "Version is missing - specify 1st param or set \$ASDF_INSTALL_VERSION"
+fi
+
+download_path=${2:-"$ASDF_DOWNLOAD_PATH"}
+if [[ -z "$download_path" ]] ; then
+  fail "Download path is missing - specify 2nd param or set \$ASDF_DOWNLOAD_PATH"
+fi
+
+repo_url=${3:-"$DEFAULT_NVIMS_REPO"}
+if [[ -z "$repo_url" ]] ; then
+  fail "repo_url is missing - specify 3rd param"
+fi
+
+echo "Preparing downloading $version from $repo_url"
+download_nvims "$version" "$download_path" "$repo_url"
