@@ -1,8 +1,8 @@
 <div align="center">
 
-# asdf-<YOUR TOOL> [![Build](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/build.yml/badge.svg)](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/build.yml) [![Lint](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/lint.yml/badge.svg)](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/actions/workflows/lint.yml)
+# asdf-nvims [![Build](https://github.com/MustCodeAl/asdf-nvims/actions/workflows/build.yml/badge.svg)](https://github.com/MustCodeAl/asdf-nvims/actions/workflows/build.yml) [![Lint](https://github.com/MustCodeAl/asdf-nvims/actions/workflows/lint.yml/badge.svg)](https://github.com/MustCodeAl/asdf-nvims/actions/workflows/lint.yml)
 
-[<YOUR TOOL>](<TOOL HOMEPAGE>) plugin for the [asdf version manager](https://asdf-vm.com).
+[nvims](https://github.com/Traap/nvims/blob/master/nvims) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
@@ -25,24 +25,24 @@
 Plugin:
 
 ```shell
-asdf plugin add <YOUR TOOL>
+asdf plugin add nvims
 # or
-asdf plugin add <YOUR TOOL> https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>.git
+asdf plugin add nvims https://github.com/MustCodeAl/asdf-nvims.git
 ```
 
-<YOUR TOOL>:
+nvims:
 
 ```shell
 # Show all installable versions
-asdf list-all <YOUR TOOL>
+asdf list-all nvims
 
 # Install specific version
-asdf install <YOUR TOOL> latest
+asdf install nvims latest
 
 # Set a version globally (on your ~/.tool-versions file)
-asdf global <YOUR TOOL> latest
+asdf global nvims latest
 
-# Now <YOUR TOOL> commands are available
+# Now nvims commands are available
 <TOOL CHECK>
 ```
 
@@ -53,8 +53,8 @@ install & manage versions.
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
-[Thanks goes to these contributors](https://github.com/<YOUR GITHUB USERNAME>/asdf-<YOUR TOOL>/graphs/contributors)!
+[Thanks goes to these contributors](https://github.com/MustCodeAl/asdf-nvims/graphs/contributors)!
 
 # License
 
-See [LICENSE](LICENSE) © [<YOUR NAME>](https://github.com/<YOUR GITHUB USERNAME>/)
+See [LICENSE](LICENSE) © [MustCodeAl](https://github.com/MustCodeAl/)
