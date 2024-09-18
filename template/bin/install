@@ -34,7 +34,7 @@ work_dir="$(pwd)"
 )
 
 }
-istall_path=${1:-"$ASDF_INSTALL_PATH"}
+install_path=${1:-"$ASDF_INSTALL_PATH"}
 if [[ -z "$install_path" ]]; then
   fail "Install path is unspecified - add 1st argument or set \$ASDF_INSTALL_PATH"
 fi
